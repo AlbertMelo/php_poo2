@@ -1,5 +1,13 @@
 <?php
 
+
+namespace Alura\Banco\Modelo\Conta;
+
+
+use Alura\Banco\Modelo\CPF;
+use Alura\Banco\Modelo\Endereco;
+use Alura\Banco\Modelo\Pessoa;
+
 class Titular extends Pessoa
 {
 
