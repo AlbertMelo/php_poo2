@@ -1,6 +1,7 @@
 
 
 <?php
+require_once 'src/Pessoa.php';
 require_once 'src/Conta.php';
 require_once 'src/Titular.php';
 require_once 'src/CPF.php';
@@ -18,7 +19,8 @@ echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
 echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
 echo $primeiraConta->recuperaSaldo() . PHP_EOL;
 
-$segundaConta = new Conta(new Titular(new CPF('698.549.548-10'), 'Patricia', new Endereco('Manaus', 'Comendador Clementino Travss', 'Centro', '85')));
+$endereco2 = new Endereco('Manaus', 'Comendador Clementino Travss', 'Centro', '85');
+$segundaConta = new Conta(new Titular(new CPF('698.549.548-10'), 'Patricia Silva', $endereco2));
 
 var_dump($segundaConta);
 

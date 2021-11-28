@@ -5,36 +5,36 @@ class Endereco
 
     private string $cidade;
 
-    private string $rua;
-
     private string $bairro;
+
+    private string $rua;
 
     private string $numero;
 
-    public function __construct(string $cidade, string $rua, string $bairro, string $numero)
+    public function __construct(string $cidade, string $bairro, string $rua, string $numero)
     {
         $this->cidade = $cidade;
-        $this->rua = $rua;
         $this->bairro = $bairro;
+        $this->rua = $rua;
         $this->numero = $numero;
     }
 
-    public function getCidade()
+    public function recuperaCidade(): string
     {
         return $this->cidade;
     }
 
-    public function getRua()
-    {
-        return $this->rua;
-    }
-
-    public function getBairro()
+    public function recuperaBairro(): string
     {
         return $this->bairro;
     }
 
-    public function getNumero()
+    public function recuperaRua(): string
+    {
+        return $this->rua;
+    }
+
+    public function recuperaNumero(): string
     {
         return $this->numero;
     }
