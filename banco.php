@@ -23,7 +23,7 @@ echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
 echo $primeiraConta->recuperaSaldo() . PHP_EOL;
 
 $endereco2 = new Endereco('Manaus', 'Comendador Clementino Travss', 'Centro', '85');
-$segundaConta = new Conta(new Titular(new CPF('698.549.548-10'), 'Patricia Silva', $endereco2));
+$segundaConta = new ContaCorrente(new Titular(new CPF('698.549.548-10'), 'Patricia Silva', $endereco2));
 
 var_dump($segundaConta);
 
