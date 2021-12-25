@@ -1,13 +1,12 @@
 <?php
-
 namespace Alura\Banco\Modelo\Conta;
 
-class Conta
+abstract class Conta
 {
 
     private Titular $titular;
 
-    private float $saldo = 0;
+    protected float $saldo = 0;
 
     private static $numeroDeContas = 0;
 
@@ -22,19 +21,10 @@ class Conta
     {
         self::$numeroDeContas --;
     }
-    
-    public static function recuperaNumeroDeContas() {
-        return self::$numeroDeContas;
-    }
 
-    public function saca(float $valorASacar): void
+    public static function recuperaNumeroDeContas()
     {
-        if ($valorASacar > $this->saldo) {
-            echo "Saldo indisponível";
-            return;
-        }
-
-        $this->saldo -= $valorASacar;
+        return self::$numeroDeContas;
     }
 
     public function deposita(float $valorADepositar): void
@@ -47,17 +37,6 @@ class Conta
         $this->saldo += $valorADepositar;
     }
 
-    public function transfere(float $valorATransferir, Conta $contaDestino): void
-    {
-        if ($valorATransferir > $this->saldo) {
-            echo "Saldo indisponível";
-            return;
-        }
-
-        $this->sacar($valorATransferir);
-        $contaDestino->depositar($valorATransferir);
-    }
-
     public function recuperaSaldo(): float
     {
         return $this->saldo;
@@ -67,9 +46,24 @@ class Conta
     {
         return $this->titular->recuperaNome();
     }
-    
+
     public function recuperaCpfTitular(): string
     {
         return $this->titular->recuperaCpf();
     }
+
+    public function saca(float $valorASacar): void
+    {
+        $tarifaSaque = $valorASacar * $this->percentualTarifa();
+        $valorSaque = $valorASacar + $tarifaSaque;
+
+        if ($valorSaque > $this->saldo) {
+            echo "Saldo indisponível";
+            return;
+        }
+
+        $this->saldo -= $valorSaque;
+    }
+
+    abstract protected function percentualTarifa(): float;
 }

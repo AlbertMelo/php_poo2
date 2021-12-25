@@ -5,6 +5,8 @@ require_once 'autoload.php';
 use Alura\Banco\Modelo\Pessoa;
 use Alura\Banco\Modelo\Conta\Titular;
 use Alura\Banco\Modelo\Conta\Conta;
+use Alura\Banco\Modelo\Conta\ContaPoupanca;
+use Alura\Banco\Modelo\Conta\ContaCorrente;
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Endereco;
 
@@ -12,7 +14,7 @@ $endereco = new Endereco('Curitiba', 'Guilherme Pugsley St.', 'Agua Verde', '118
 
 $titular = new Titular(new CPF('123.456.789-10'), 'Vinicius Dias', $endereco);
 
-$primeiraConta = new Conta($titular);
+$primeiraConta = new ContaCorrente($titular);
 $primeiraConta->deposita(500);
 $primeiraConta->saca(300); // isso é ok
 
