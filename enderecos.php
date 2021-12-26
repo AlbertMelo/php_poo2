@@ -18,4 +18,7 @@ $outroEndereco = new Endereco(
     );
 
 echo $umEndereco . PHP_EOL;
-echo $outroEndereco;
+echo $outroEndereco . PHP_EOL;
+
+echo $umEndereco->bairro;
+exit();
